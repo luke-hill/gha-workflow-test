@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'curb'
+
+class VersionChecker
+  def initialize
+    @attempts = 0
+  end
+
+  def run
+    raise 'STOP' if @attempts >= 3
+    puts "Check failed - Will sleep 1s and then retry again"
+    sleep 1
+    @attempts += 1
+    run
+  end
+end
+
+VersionChecker.new.run
