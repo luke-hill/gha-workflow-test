@@ -1,5 +1,5 @@
 ---
-name: Test GHA workflow
+name: Test "bin-script" GHA workflow
 
 on:
   workflow_dispatch:

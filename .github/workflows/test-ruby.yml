@@ -1,0 +1,21 @@
+---
+name: Test "bin-script" GHA workflow
+
+on:
+  workflow_dispatch:
+
+jobs:
+  gha:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pre-requisites for `curb` gem
+        run: sudo apt-get install libcurl4 libcurl3-gnutls libcurl4-openssl-dev
+        shell: bash
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.2'
+          bundler: '2.6.2'
+          bundler-cache: true
+      - name: Wait until deploy has completed
+        run: ruby ./bin/wait-for-deploy
