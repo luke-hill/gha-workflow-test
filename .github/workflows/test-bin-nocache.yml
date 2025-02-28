@@ -16,5 +16,6 @@ jobs:
         with:
           ruby-version: '3.4.2'
           bundler: '2.6.2'
+          bundler-cache: false
       - name: Wait until deploy has completed
         run: ./bin/wait-for-deploy
